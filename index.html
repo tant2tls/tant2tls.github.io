@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tan Ngo</title>
+<meta name="description" content="Tan Ngo — AI Research Resident at Qualcomm. Generative models for image, video, and 3D." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>T</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5e6470;
+    --accent: #0b4f9c;
+    --accent-soft: #eaf1fb;
+    --rule: #e6e8ec;
+    --card: #fafbfc;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top {
+    border-bottom: 1px solid var(--rule);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  nav.top .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  nav.top .brand {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--fg);
+  }
+  nav.top .links { display: flex; gap: 18px; font-size: 14.5px; }
+  nav.top .links a { color: #444; }
+  nav.top .links a:hover { color: var(--accent); }
+
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+  }
+
+  /* Hero */
+  header.hero {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .avatar-wrap {
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .avatar-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--rule);
+    display: block;
+  }
+  .avatar-fallback {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0b4f9c 0%, #4a8bd9 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Source Serif 4', serif;
+    font-size: 62px;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(11, 79, 156, 0.18);
+  }
+  .hero-body { flex: 1; min-width: 260px; }
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -0.5px;
+  }
+  .role {
+    color: var(--muted);
+    font-size: 15.5px;
+    margin: 0 0 14px;
+  }
+  .role b { color: var(--fg); font-weight: 600; }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    font-size: 14.5px;
+    margin-top: 4px;
+  }
+  .contact-row a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .contact-row .sep { color: #c8ccd2; }
+
+  /* Sections */
+  section { margin-top: 44px; }
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: -0.2px;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* Bio */
+  .bio p { font-size: 16px; }
+  .interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  /* News */
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .news-list li {
+    display: flex;
+    gap: 18px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+  }
+  .news-list .date {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    font-size: 14px;
+    min-width: 95px;
+    padding-top: 1px;
+  }
+  .news-list .what { flex: 1; }
+
+  /* Publications */
+  .pub {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub-thumb {
+    width: 110px;
+    height: 75px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #eaf1fb 0%, #d6e4f4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid var(--rule);
+    text-align: center;
+    padding: 6px;
+  }
+  .pub-body { flex: 1; min-width: 0; }
+  .pub-title { font-weight: 600; margin-bottom: 3px; line-height: 1.4; }
+  .pub-authors { font-size: 14.5px; color: #2c2c2c; margin-bottom: 3px; }
+  .pub-authors b { color: var(--fg); }
+  .pub-venue { font-size: 13.5px; color: var(--muted); font-style: italic; }
+  .pub-status {
+    display: inline-block;
+    background: #fff5e6;
+    color: #b56300;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 6px;
+    vertical-align: 1px;
+  }
+
+  /* Entries (research / experience / education) */
+  .entry {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .entry-meta {
+    color: var(--muted);
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .entry-sub {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin: 2px 0 6px;
+  }
+  .entry ul {
+    margin: 6px 0 0;
+    padding-left: 20px;
+  }
+  .entry li {
+    margin-bottom: 3px;
+    font-size: 15px;
+    color: #2c2c2c;
+  }
+
+  /* Awards */
+  .awards { padding: 0; margin: 0; list-style: none; }
+  .awards li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+  }
+  .awards li:last-child { border-bottom: none; }
+  .awards .year {
+    color: var(--muted);
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+    min-width: 78px;
+  }
+  .awards .what { flex: 1; }
+  .awards .what b { color: var(--fg); }
+
+  /* Skills */
+  .skills p { font-size: 15px; }
+  .skills b { color: var(--fg); }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 32px; }
+    .avatar-wrap { width: 110px; height: 110px; }
+    .avatar-fallback { font-size: 44px; }
+    main { padding: 32px 18px 64px; }
+    .pub-thumb { width: 80px; height: 56px; font-size: 10px; }
+    nav.top .inner { padding: 12px 18px; }
+    nav.top .links { gap: 14px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <span class="brand">Tan Ngo</span>
+    <div class="links">
+      <a href="#bio">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<header class="hero" id="bio">
+  <div class="avatar-wrap">
+    <img src="profile.jpg" alt="Tan Ngo" class="avatar-img"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="avatar-fallback" style="display:none;">TN</div>
+  </div>
+  <div class="hero-body">
+    <h1>Tan Ngo</h1>
+    <p class="role">
+      AI Research Resident at <b>Qualcomm AI Research</b><br>
+      B.Sc. in Computer Science, <b>Hanoi University of Science and Technology</b>
+    </p>
+    <div class="contact-row">
+      <a href="mailto:tanngo06022002@gmail.com">Email</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/tant2tls">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://www.linkedin.com/in/tanngospring/">LinkedIn</a>
+      <span class="sep">·</span>
+      <a href="CV.pdf">CV</a>
+    </div>
+  </div>
+</header>
+
+<section class="bio">
+  <p>
+    I am an AI Research Resident at <a href="https://www.qualcomm.com/research/artificial-intelligence">Qualcomm AI Research</a>,
+    working on 2D image, 3D content, and video generation — with an emphasis on
+    distillation and quantization that make modern generative models deployable on
+    edge devices. I graduated early from HUST in 3.5 years with a B.Sc. in
+    Computer Science (GPA 3.69 / 4.0), finishing among the Top 9 graduating
+    students and delivering the class graduation speech.
+  </p>
+  <p>
+    My research sits at the boundary between <b>model design</b> and <b>systems</b>:
+    I want to understand AI end-to-end, from the mathematics of learning dynamics
+    to the GPU architectures that make these models run at scale. I am currently
+    applying to PhD programs to pursue this direction.
+  </p>
+  <div class="interests">
+    <span class="tag">Generative models</span>
+    <span class="tag">Video generation</span>
+    <span class="tag">Diffusion distillation</span>
+    <span class="tag">Multi-view / 3D</span>
+    <span class="tag">Efficient inference</span>
+    <span class="tag">Distributed training</span>
+  </div>
+</section>
+
+<section id="news">
+  <h2>News</h2>
+  <ul class="news-list">
+    <li>
+      <span class="date">Jun 2026</span>
+      <span class="what">Submitted <i>Track the Noise, Move the World</i> to <b>NeurIPS 2026</b>.</span>
+    </li>
+    <li>
+      <span class="date">Jan 2026</span>
+      <span class="what">Started a new project on unifying camera and motion control for video generation at Qualcomm.</span>
+    </li>
+    <li>
+      <span class="date">Dec 2025</span>
+      <span class="what">Few-step text-to-multiview diffusion model deployed on Samsung Galaxy S24.</span>
+    </li>
+    <li>
+      <span class="date">Jun 2025</span>
+      <span class="what">Joined Qualcomm AI Research as an AI Research Resident.</span>
+    </li>
+    <li>
+      <span class="date">Apr 2025</span>
+      <span class="what">Graduated from HUST in 3.5 years; one of 9 outstanding graduating students; gave the class graduation speech.</span>
+    </li>
+  </ul>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+
+  <div class="pub">
+    <div class="pub-thumb">3D-Grounded<br>Noise for Video</div>
+    <div class="pub-body">
+      <div class="pub-title">Track the Noise, Move the World: 3D-Grounded Motion-Consistent Noise for Controllable Video Generation</div>
+      <div class="pub-authors">
+        Long Van Vu*, <b>Tan Van Ngo</b>*, Animesh Karnewar, Amir Habibian, Binh-Son Hua, Hung H. Bui, Minh Hoai, Phong Ha Nguyen
+      </div>
+      <div class="pub-venue">
+        Under review at NeurIPS 2026 <span class="pub-status">In Submission</span><br>
+        *Equal contribution
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <h2>Research</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Unifying Camera and Motion Control for Video Generation</h3>
+      <span class="entry-meta">Jan 2026 – Present</span>
+    </div>
+    <p class="entry-sub">Qualcomm AI Research</p>
+    <ul>
+      <li>Jointly controlling camera movement and object motion in generative video models.</li>
+      <li>Using depth estimation to inject 3D awareness, going beyond 2D-only conditioning.</li>
+      <li>Scaling training, inference, and evaluation across multi-node GPU systems with up to 300 GPUs.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Few-Step Text-to-Multiview Diffusion Model</h3>
+      <span class="entry-meta">Jun 2025 – Dec 2025</span>
+    </div>
+    <p class="entry-sub">Qualcomm AI Research</p>
+    <ul>
+      <li>Distilled a few-step MVDream-style model for higher-resolution multi-view generation.</li>
+      <li>Improved multi-view quality via training, data refinement, and model optimization.</li>
+      <li>Quantized the few-step model and supported deployment on Samsung Galaxy S24 phones.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Continual Learning for Object Detection with Generative Data Replay</h3>
+      <span class="entry-meta">Sep 2024 – Jan 2025</span>
+    </div>
+    <ul>
+      <li>Applied continual learning to object detection to reduce catastrophic forgetting across sequential tasks.</li>
+      <li>Used diffusion-generated replay data to improve knowledge retention and training stability.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>3D Scene Reconstruction with Neural Radiance Fields for 5G Antenna Inspection</h3>
+      <span class="entry-meta">Apr 2024 – Jun 2024</span>
+    </div>
+    <p class="entry-sub">Viettel Digital Talent · Viettel Group</p>
+    <ul>
+      <li>Reconstructed 5G BTS station scenes with NeRF and used the reconstructions to detect broadcast antenna tilt, reducing manual inspection cost.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Vision Transformers for Medical Endoscopy Segmentation</h3>
+      <span class="entry-meta">Oct 2023 – Aug 2024</span>
+    </div>
+    <p class="entry-sub">Computer Vision Lab, BKAI, HUST</p>
+    <ul>
+      <li>Vision Transformer methods for endoscopy image segmentation.</li>
+      <li>Used Masked Autoencoder (MAE) pretraining to improve segmentation classification.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>AI Research Resident — Qualcomm</h3>
+      <span class="entry-meta">Jun 2025 – Present</span>
+    </div>
+    <ul>
+      <li>Research on 2D image, 3D content, and video generation.</li>
+      <li>Distillation and quantization for efficient on-device inference (e.g., Samsung phones).</li>
+      <li>Developing video data generation methods for robot training.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Generative AI Engineer — ZenAI</h3>
+      <span class="entry-meta">Aug 2024 – Jun 2025</span>
+    </div>
+    <ul>
+      <li>Optimized LLM inference and serving with vLLM and SGLang.</li>
+      <li>Accelerated inference via quantization, KV-cache optimization, and multi-GPU parallelism.</li>
+      <li>Reduced CPU–GPU communication overhead to improve serving throughput.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Viettel Digital Talent — Viettel Group</h3>
+      <span class="entry-meta">Apr 2024 – Jun 2024</span>
+    </div>
+    <ul>
+      <li>Intensive training in data science, machine learning, and deep learning.</li>
+      <li>NeRF-based 3D reconstruction of 5G BTS scenes for antenna inspection.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Undergraduate Research Assistant — Computer Vision Lab, BKAI, HUST</h3>
+      <span class="entry-meta">Oct 2023 – Aug 2024</span>
+    </div>
+    <ul>
+      <li>Vision Transformer methods for medical endoscopy image segmentation.</li>
+      <li>MAE pretraining to improve segmentation classification.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="cv">
+  <h2>Education</h2>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Hanoi University of Science and Technology (HUST)</h3>
+      <span class="entry-meta">Aug 2021 – Apr 2025</span>
+    </div>
+    <p class="entry-sub">B.Sc. in Computer Science · Hanoi, Vietnam</p>
+    <ul>
+      <li>GPA 3.69 / 4.0 — graduated early in 3.5 years.</li>
+      <li>Top 9 Excellent Students of the graduating class.</li>
+      <li>Delivered the graduation speech on behalf of all graduating students.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <h3>Lam Son High School for the Gifted</h3>
+      <span class="entry-meta">Aug 2018 – May 2021</span>
+    </div>
+    <p class="entry-sub">Mathematics Track · Thanh Hoa, Vietnam</p>
+  </div>
+</section>
+
+<section>
+  <h2>Honors &amp; Awards</h2>
+  <ul class="awards">
+    <li>
+      <span class="year">2024–2025</span>
+      <span class="what"><b>Director's Certificate of Merit, HUST</b> — One of 9 outstanding graduating students for academic performance and conduct.</span>
+    </li>
+    <li>
+      <span class="year">2022–2024</span>
+      <span class="what"><b>HUST Wings Scholarship</b> — Six consecutive semesters.</span>
+    </li>
+    <li>
+      <span class="year">2021–2022</span>
+      <span class="what"><b>HUST Academic Encouragement Scholarship</b> — Top &lt;10% of the CS cohort.</span>
+    </li>
+    <li>
+      <span class="year">2021</span>
+      <span class="what"><b>Vietnam National Mathematics Olympiad, Second Prize — TST List</b> — Ranked 11th nationally; selected for the IMO Team Selection Test.</span>
+    </li>
+    <li>
+      <span class="year">2020</span>
+      <span class="what"><b>Vietnam National Mathematics Olympiad, Consolation Prize.</b></span>
+    </li>
+    <li>
+      <span class="year">2019</span>
+      <span class="what"><b>North Central Region Mathematics Olympiad, First Prize</b> — Among specialized high schools.</span>
+    </li>
+  </ul>
+</section>
+
+<section class="skills">
+  <h2>Skills</h2>
+  <p><b>Languages:</b> Python, C / C++</p>
+  <p><b>Frameworks:</b> PyTorch, distributed training and inference, multi-GPU / multi-node systems</p>
+  <p><b>Tools:</b> Git, Linux, Docker, SLURM</p>
+  <p><b>Libraries:</b> Diffusers, OpenCV, Pandas, NumPy, Matplotlib, scikit-learn</p>
+</section>
+
+<footer>
+  &copy; 2026 Tan Ngo · Built with HTML &amp; CSS
+</footer>
+
+</main>
+</body>
+</html>

@@ -31,6 +31,6 @@ Styling is driven by CSS custom properties in `:root` (`--accent: #0b4f9c` is th
 
 ## Known content nuances
 
-- Academic ranking is **"Top 3 Excellent Students"** (graduating class). This is distinct from the **Director's Certificate of Merit**, given to **9** outstanding graduates — both numbers are correct and refer to different things; don't reconcile them into one.
+- Academic ranking is **"Top 3 Excellent Students"** of the graduating class, and the **Director's Certificate of Merit** is likewise given to **3** outstanding graduates — both use 3. Keep them consistent.
 - The graduation speech is an embedded Facebook video plugin iframe (requires the reel to stay Public) with a plain-link fallback below it for ad-blocked visitors.
 - The homepage is the source of truth for what's public; `../CV.md` (one level up, outside this repo) holds the fuller record and is the reference when syncing news/rankings.

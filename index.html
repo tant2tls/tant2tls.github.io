@@ -85,6 +85,7 @@
   .avatar-img {
     width: 100%; height: 100%;
     object-fit: cover;
+    object-position: center 18%;
     border-radius: 50%;
     border: 1px solid var(--rule);
     display: block;
@@ -231,6 +232,16 @@
     margin-left: 6px;
     vertical-align: 1px;
   }
+  .pub-links { margin-top: 5px; font-size: 13.5px; }
+  .pub-links a {
+    display: inline-block;
+    padding: 1px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .pub-links a:hover { background: #eaf1fb; }
 
   /* Entries (research / experience / education) */
   .entry {
@@ -290,6 +301,67 @@
   .skills p { font-size: 15px; }
   .skills b { color: var(--fg); }
 
+  /* Residency */
+  .residency-figure { margin: 0; }
+  .residency-figure img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    display: block;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .residency-figure figcaption {
+    margin-top: 10px;
+    font-size: 13.5px;
+    color: var(--muted);
+    text-align: center;
+  }
+  .residency-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  /* Graduation */
+  .grad-intro { font-size: 15.5px; color: #2c2c2c; margin-bottom: 16px; }
+  .grad-video {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 10px;
+  }
+  .grad-video iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .grad-fallback { font-size: 13.5px; color: var(--muted); text-align: center; }
+  .grad-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .grad-gallery figure { margin: 0; }
+  .grad-gallery img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--rule);
+    display: block;
+  }
+  .grad-gallery figcaption {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+  }
+
   footer {
     margin-top: 64px;
     padding-top: 18px;
@@ -320,7 +392,8 @@
       <a href="#bio">About</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
-      <a href="#research">Research</a>
+      <a href="#residency">Residency</a>
+      <a href="#graduation">Graduation</a>
       <a href="#cv">CV</a>
     </div>
   </div>
@@ -330,7 +403,7 @@
 
 <header class="hero" id="bio">
   <div class="avatar-wrap">
-    <img src="profile.jpg" alt="Tan Ngo" class="avatar-img"
+    <img src="avatars_tanngo.jpg" alt="Tan Ngo" class="avatar-img"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
     <div class="avatar-fallback" style="display:none;">TN</div>
   </div>
@@ -341,24 +414,24 @@
       B.Sc. in Computer Science, <b>Hanoi University of Science and Technology</b>
     </p>
     <div class="contact-row">
-      <a href="mailto:tanngo06022002@gmail.com">Email</a>
+      <a href="mailto:tanngo06022002@gmail.com" target="_blank" rel="noopener">Email</a>
       <span class="sep">·</span>
-      <a href="https://github.com/tant2tls">GitHub</a>
+      <a href="https://github.com/tant2tls" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">·</span>
-      <a href="https://www.linkedin.com/in/tanngospring/">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/tanngospring/" target="_blank" rel="noopener">LinkedIn</a>
       <span class="sep">·</span>
-      <a href="CV.pdf">CV</a>
+      <a href="CV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
   </div>
 </header>
 
 <section class="bio">
   <p>
-    I am an AI Research Resident at <a href="https://www.qualcomm.com/research/artificial-intelligence">Qualcomm AI Research</a>,
+    I am an AI Research Resident at <a href="https://www.qualcomm.com/research/artificial-intelligence" target="_blank" rel="noopener">Qualcomm AI Research</a>,
     working on 2D image, 3D content, and video generation — with an emphasis on
     distillation and quantization that make modern generative models deployable on
     edge devices. I graduated early from HUST in 3.5 years with a B.Sc. in
-    Computer Science (GPA 3.69 / 4.0), finishing among the Top 9 graduating
+    Computer Science (GPA 3.69 / 4.0), finishing among the Top 3 graduating
     students and delivering the class graduation speech.
   </p>
   <p>
@@ -385,12 +458,8 @@
       <span class="what">Submitted <i>Track the Noise, Move the World</i> to <b>NeurIPS 2026</b>.</span>
     </li>
     <li>
-      <span class="date">Jan 2026</span>
-      <span class="what">Started a new project on unifying camera and motion control for video generation at Qualcomm.</span>
-    </li>
-    <li>
       <span class="date">Dec 2025</span>
-      <span class="what">Few-step text-to-multiview diffusion model deployed on Samsung Galaxy S24.</span>
+      <span class="what">Few-step multiview diffusion model showcased in the <b>Qualcomm bootcamp demo at NeurIPS 2025</b>.</span>
     </li>
     <li>
       <span class="date">Jun 2025</span>
@@ -417,122 +486,27 @@
         Under review at NeurIPS 2026 <span class="pub-status">In Submission</span><br>
         *Equal contribution
       </div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/html/2607.02798v1" target="_blank" rel="noopener">arXiv</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="research">
-  <h2>Research</h2>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Unifying Camera and Motion Control for Video Generation</h3>
-      <span class="entry-meta">Jan 2026 – Present</span>
-    </div>
-    <p class="entry-sub">Qualcomm AI Research</p>
-    <ul>
-      <li>Jointly controlling camera movement and object motion in generative video models.</li>
-      <li>Using depth estimation to inject 3D awareness, going beyond 2D-only conditioning.</li>
-      <li>Scaling training, inference, and evaluation across multi-node GPU systems with up to 300 GPUs.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Few-Step Text-to-Multiview Diffusion Model</h3>
-      <span class="entry-meta">Jun 2025 – Dec 2025</span>
-    </div>
-    <p class="entry-sub">Qualcomm AI Research</p>
-    <ul>
-      <li>Distilled a few-step MVDream-style model for higher-resolution multi-view generation.</li>
-      <li>Improved multi-view quality via training, data refinement, and model optimization.</li>
-      <li>Quantized the few-step model and supported deployment on Samsung Galaxy S24 phones.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Continual Learning for Object Detection with Generative Data Replay</h3>
-      <span class="entry-meta">Sep 2024 – Jan 2025</span>
-    </div>
-    <ul>
-      <li>Applied continual learning to object detection to reduce catastrophic forgetting across sequential tasks.</li>
-      <li>Used diffusion-generated replay data to improve knowledge retention and training stability.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>3D Scene Reconstruction with Neural Radiance Fields for 5G Antenna Inspection</h3>
-      <span class="entry-meta">Apr 2024 – Jun 2024</span>
-    </div>
-    <p class="entry-sub">Viettel Digital Talent · Viettel Group</p>
-    <ul>
-      <li>Reconstructed 5G BTS station scenes with NeRF and used the reconstructions to detect broadcast antenna tilt, reducing manual inspection cost.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Vision Transformers for Medical Endoscopy Segmentation</h3>
-      <span class="entry-meta">Oct 2023 – Aug 2024</span>
-    </div>
-    <p class="entry-sub">Computer Vision Lab, BKAI, HUST</p>
-    <ul>
-      <li>Vision Transformer methods for endoscopy image segmentation.</li>
-      <li>Used Masked Autoencoder (MAE) pretraining to improve segmentation classification.</li>
-    </ul>
-  </div>
-</section>
-
-<section id="experience">
-  <h2>Experience</h2>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>AI Research Resident — Qualcomm</h3>
-      <span class="entry-meta">Jun 2025 – Present</span>
-    </div>
-    <ul>
-      <li>Research on 2D image, 3D content, and video generation.</li>
-      <li>Distillation and quantization for efficient on-device inference (e.g., Samsung phones).</li>
-      <li>Developing video data generation methods for robot training.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Generative AI Engineer — ZenAI</h3>
-      <span class="entry-meta">Aug 2024 – Jun 2025</span>
-    </div>
-    <ul>
-      <li>Optimized LLM inference and serving with vLLM and SGLang.</li>
-      <li>Accelerated inference via quantization, KV-cache optimization, and multi-GPU parallelism.</li>
-      <li>Reduced CPU–GPU communication overhead to improve serving throughput.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Viettel Digital Talent — Viettel Group</h3>
-      <span class="entry-meta">Apr 2024 – Jun 2024</span>
-    </div>
-    <ul>
-      <li>Intensive training in data science, machine learning, and deep learning.</li>
-      <li>NeRF-based 3D reconstruction of 5G BTS scenes for antenna inspection.</li>
-    </ul>
-  </div>
-
-  <div class="entry">
-    <div class="entry-header">
-      <h3>Undergraduate Research Assistant — Computer Vision Lab, BKAI, HUST</h3>
-      <span class="entry-meta">Oct 2023 – Aug 2024</span>
-    </div>
-    <ul>
-      <li>Vision Transformer methods for medical endoscopy image segmentation.</li>
-      <li>MAE pretraining to improve segmentation classification.</li>
-    </ul>
-  </div>
+<section id="residency">
+  <h2>Qualcomm AI Residency</h2>
+  <span class="residency-badge">Batch 13 · AI Research Resident</span>
+  <p class="grad-intro">
+    I began my professional research career as a member of <b>Batch 13 of the
+    Qualcomm AI Residency Program</b> at Qualcomm AI Research, building the next
+    generation of on-device generative AI alongside a talented cohort of residents
+    and researchers.
+  </p>
+  <figure class="residency-figure">
+    <img src="Qualcomm_AI_Resident/Join_Qualcomm_AI_Research_VN_as_AI_Research_Resident.jpg"
+         alt="Qualcomm AI Residency Program — Batch 13 cohort" loading="lazy">
+    <figcaption>Qualcomm AI Residency Program — Batch 13 cohort, Qualcomm AI Research Vietnam</figcaption>
+  </figure>
 </section>
 
 <section id="cv">
@@ -546,7 +520,7 @@
     <p class="entry-sub">B.Sc. in Computer Science · Hanoi, Vietnam</p>
     <ul>
       <li>GPA 3.69 / 4.0 — graduated early in 3.5 years.</li>
-      <li>Top 9 Excellent Students of the graduating class.</li>
+      <li>Top 3 Excellent Students of the graduating class.</li>
       <li>Delivered the graduation speech on behalf of all graduating students.</li>
     </ul>
   </div>
@@ -588,6 +562,46 @@
       <span class="what"><b>North Central Region Mathematics Olympiad, First Prize</b> — Among specialized high schools.</span>
     </li>
   </ul>
+</section>
+
+<section id="graduation">
+  <h2>Graduation</h2>
+  <p class="grad-intro">
+    I graduated early from HUST in 3.5 years and had the honor of delivering the
+    class graduation speech on behalf of all graduating students — one of the most
+    memorable moments of my time there.
+  </p>
+  <div class="grad-video">
+    <iframe
+      src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fo365.hust%2Fvideos%2F1237349637759299%2F&show_text=false&width=267&t=0"
+      width="267" height="476"
+      style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+      allowfullscreen="true"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      title="Tan Ngo — graduation speech"></iframe>
+  </div>
+  <p class="grad-fallback">
+    Video not loading?
+    <a href="https://www.facebook.com/reel/1237349637759299" target="_blank" rel="noopener">Watch the speech on Facebook</a>.
+  </p>
+  <div class="grad-gallery">
+    <figure>
+      <img src="graduation/graduation_avatar.jpg" alt="Graduation day" loading="lazy">
+      <figcaption>Graduation day</figcaption>
+    </figure>
+    <figure>
+      <img src="graduation/gold_medal_for_exellent_student.jpg" alt="Gold Medal for Excellent Student" loading="lazy">
+      <figcaption>Gold Medal for Excellent Student</figcaption>
+    </figure>
+    <figure>
+      <img src="graduation/exellent_student_award.jpg" alt="Excellent Student Award" loading="lazy">
+      <figcaption>Excellent Student Award</figcaption>
+    </figure>
+    <figure>
+      <img src="graduation/top3_exellent_student.jpg" alt="Top Excellent Student" loading="lazy">
+      <figcaption>Among the top excellent students</figcaption>
+    </figure>
+  </div>
 </section>
 
 <section class="skills">

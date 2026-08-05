@@ -21,7 +21,7 @@ Reference paths in `index.html` are relative to the repo root (e.g. `graduation/
 
 ## Page structure & conventions
 
-Sections live in `<section id="...">` blocks; the sticky top nav (`nav.top .links`) anchors to those ids. **When adding or removing a section, update the nav links to match.** Current order: About (`#bio`) → News (`#news`) → Publications (`#publications`) → Systems (`#systems`, "Systems Research Interest") → Residency (`#residency`) → Graduation (`#graduation`) → Education/CV (`#cv`) → Honors → Skills. The `#cv` nav link jumps to the Education section heading, not the PDF; the header contact row has a separate `CV.pdf` link.
+Sections live in `<section id="...">` blocks; the sticky top nav (`nav.top .links`) anchors to those ids. **When adding or removing a section, update the nav links to match.** Current order: About (`#bio`) → News (`#news`) → Publications (`#publications`) → Systems (`#systems`, "Systems Research Interest") → Residency (`#residency`) → Graduation (`#graduation`) → Education/CV (`#cv`) → Honors → Skills. The nav **"CV" link and the header contact-row "CV" link both open `CV.pdf`** (new tab); the Education section still carries `id="cv"` but is no longer targeted by a nav link.
 
 Repeatable content is added by copying an existing block:
 - **Publication**: copy a `<div class="pub">` block. Author lists bold the site owner as `<b>Tan Van Ngo</b>`; external links go in `.pub-links` as bordered anchor badges.

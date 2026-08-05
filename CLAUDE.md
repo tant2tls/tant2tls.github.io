@@ -21,7 +21,7 @@ Reference paths in `index.html` are relative to the repo root (e.g. `graduation/
 
 ## Page structure & conventions
 
-Sections live in `<section id="...">` blocks; the sticky top nav (`nav.top .links`) anchors to those ids. **When adding or removing a section, update the nav links to match.** Current order: About (`#bio`) → News (`#news`) → Publications (`#publications`) → Residency (`#residency`) → Graduation (`#graduation`) → Education/CV (`#cv`) → Honors → Skills. The `#cv` nav link jumps to the Education section heading, not the PDF; the header contact row has a separate `CV.pdf` link.
+Sections live in `<section id="...">` blocks; the sticky top nav (`nav.top .links`) anchors to those ids. **When adding or removing a section, update the nav links to match.** Current order: About (`#bio`) → News (`#news`) → Publications (`#publications`) → Systems (`#systems`, "Systems Research Interest") → Residency (`#residency`) → Graduation (`#graduation`) → Education/CV (`#cv`) → Honors → Skills. The `#cv` nav link jumps to the Education section heading, not the PDF; the header contact row has a separate `CV.pdf` link.
 
 Repeatable content is added by copying an existing block:
 - **Publication**: copy a `<div class="pub">` block. Author lists bold the site owner as `<b>Tan Van Ngo</b>`; external links go in `.pub-links` as bordered anchor badges.
@@ -31,6 +31,18 @@ Styling is driven by CSS custom properties in `:root` (`--accent: #0b4f9c` is th
 
 ## Known content nuances
 
-- Academic ranking is **"Top 3 Excellent Students"** of the graduating class, and the **Director's Certificate of Merit** is likewise given to **3** outstanding graduates — both use 3. Keep them consistent.
+- Academic ranking is **"one of 4 Excellent Students"** of the graduating class, and the **Director's Certificate of Merit** is likewise given to those **4** outstanding graduates — both use 4 (updated 2026-08-05 from the master `CV.md`). Keep them consistent across bio, News, Education, and Honors.
 - The graduation speech is an embedded Facebook video plugin iframe (requires the reel to stay Public) with a plain-link fallback below it for ad-blocked visitors.
 - The homepage is the source of truth for what's public; `../CV.md` (one level up, outside this repo) holds the fuller record and is the reference when syncing news/rankings.
+
+## Surrounding application workspace (one level up)
+
+This repo is nested inside `../` (`Tan/`), Tan Ngo's **PhD application workspace** for AI / CS / ML Systems programs — a **separate git repo** with its own history. Commits do not span the two: commit site changes from within this folder, workspace changes from `../`. The homepage is the public highlight-reel cut of the material that lives there:
+
+- `../CV.md` — the **master CV** (detailed record). Add or rewrite CV content there first, then flow it here.
+- `../SoP.md` — Statement of Purpose. Its thesis (becoming a researcher who understands AI **end-to-end**, bridging **model design and systems optimization**) is the positioning the whole application ladders up to; keep the homepage's bio and framing aligned with it.
+- `../CV_dream/` — untracked scratch space for CV iteration. Pipeline is one direction: `CV.md` → `CV_dream/CV_pdf.md` (concise cut) → `CV_dream/cv.tex` / `cv_v2.tex` (LaTeX renders). The `<!-- ... -->` header comments in `CV_pdf.md` are the authoritative changelog for CV decisions.
+
+**Consistency mandate:** the same facts and metrics appear across `../CV.md`, `../SoP.md`, the CV renders, and this page. Drift between them is a credibility problem for an application. When you change a load-bearing fact, propagate it to every surface in the same session. **Metrics are real — copy them exactly, never round or invent** (e.g. `5.4×` faster eval matched to `1.79e-7` per video; FLUX `2.02 s → 0.86 s`; startup `9 min → ~44 s`). Known drift traps: the graduating-students count (**4**), the LinkedIn handle (`tant2tls` — an old `tanngospring` URL still lingers in places), and the arXiv link for *Track the Noise, Move the World*. Grep across surfaces after touching any of these.
+
+**Producing `CV.pdf`:** the header links to `CV.pdf` in this repo. It is rendered from the LaTeX in `../CV_dream/` (`cd ../CV_dream && pdflatex cv.tex`, or `cv_v2.tex` for the merged research/work layout — both render from `CV_pdf.md`, not `CV.md`). When the CV changes, re-render and copy the PDF here, then `git add CV.pdf` (assets are easily left untracked — see above).

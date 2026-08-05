@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta 
+charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Tan Ngo</title>
 <meta name="description" content="Tan Ngo — AI Research Resident at Qualcomm. Generative models for image, video, and 3D." />
@@ -152,6 +153,26 @@
 
   /* Bio */
   .bio p { font-size: 16px; }
+  .bio blockquote {
+    margin: 0 0 22px;
+    padding: 6px 0 6px 20px;
+    border-left: 4px solid var(--accent);
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: var(--fg);
+  }
+  .bio blockquote .attr {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
   .interests {
     display: flex;
     flex-wrap: wrap;
@@ -300,6 +321,14 @@
   /* Skills */
   .skills p { font-size: 15px; }
   .skills b { color: var(--fg); }
+  .skills code, .entry code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
 
   /* Residency */
   .residency-figure { margin: 0; }
@@ -340,6 +369,7 @@
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   }
   .grad-fallback { font-size: 13.5px; color: var(--muted); text-align: center; }
+  .grad-press { font-size: 13.5px; color: var(--muted); text-align: center; margin-top: 4px; }
   .grad-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -392,6 +422,7 @@
       <a href="#bio">About</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
+      <a href="#systems">Systems</a>
       <a href="#residency">Residency</a>
       <a href="#graduation">Graduation</a>
       <a href="#cv">CV</a>
@@ -418,7 +449,7 @@
       <span class="sep">·</span>
       <a href="https://github.com/tant2tls" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">·</span>
-      <a href="https://www.linkedin.com/in/tanngospring/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/tant2tls/" target="_blank" rel="noopener">LinkedIn</a>
       <span class="sep">·</span>
       <a href="CV.pdf" target="_blank" rel="noopener">CV</a>
     </div>
@@ -426,19 +457,29 @@
 </header>
 
 <section class="bio">
+  <blockquote>
+    "There is always a God's solution."
+  </blockquote>
   <p>
     I am an AI Research Resident at <a href="https://www.qualcomm.com/research/artificial-intelligence" target="_blank" rel="noopener">Qualcomm AI Research</a>,
-    working on 2D image, 3D content, and video generation — with an emphasis on
-    distillation and quantization that make modern generative models deployable on
-    edge devices. I graduated early from HUST in 3.5 years with a B.Sc. in
-    Computer Science (GPA 3.69 / 4.0), finishing among the Top 3 graduating
-    students and delivering the class graduation speech.
+    working on image, 3D, and video generation — currently unifying
+    <b>camera and object motion control</b> for video diffusion, with training,
+    inference, and evaluation running across clusters of up to 300 GPUs.
   </p>
   <p>
-    My research sits at the boundary between <b>model design</b> and <b>systems</b>:
-    I want to understand AI end-to-end, from the mathematics of learning dynamics
-    to the GPU architectures that make these models run at scale. I am currently
-    applying to PhD programs to pursue this direction.
+    My interest sits at the boundary between <b>model design</b> and <b>ML
+    systems</b>: I want to understand AI end-to-end, from the learning dynamics of
+    generative models down to the GPU kernels and distributed systems that run them
+    at scale. I love thinking about <b>efficiency and parallelism</b> — trusting
+    measurement over intuition, hunting for where performance is quietly lost, and
+    reshaping work so it runs together rather than in sequence — and I want to
+    co-design models and their execution so that efficiency is built in rather than
+    bolted on.
+  </p>
+  <p>
+    I am applying to PhD programs to build the theory behind the systems I have
+    learned to bend.
+  </p>
   </p>
   <div class="interests">
     <span class="tag">Generative models</span>
@@ -447,6 +488,7 @@
     <span class="tag">Multi-view / 3D</span>
     <span class="tag">Efficient inference</span>
     <span class="tag">Distributed training</span>
+    <span class="tag">ML systems</span>
   </div>
 </section>
 
@@ -467,7 +509,7 @@
     </li>
     <li>
       <span class="date">Apr 2025</span>
-      <span class="what">Graduated from HUST in 3.5 years; one of 9 outstanding graduating students; gave the class graduation speech.</span>
+      <span class="what">Graduated from HUST in 3.5 years; one of 4 outstanding graduating students; gave the class graduation speech.</span>
     </li>
   </ul>
 </section>
@@ -487,20 +529,45 @@
         *Equal contribution
       </div>
       <div class="pub-links">
-        <a href="https://arxiv.org/html/2607.02798v1" target="_blank" rel="noopener">arXiv</a>
+        <a href="https://arxiv.org/html/2607.02798" target="_blank" rel="noopener">arXiv</a>
       </div>
     </div>
   </div>
+</section>
+
+<section id="systems">
+  <h2>Systems Research Interest</h2>
+  <p class="grad-intro">
+    Outside my main project, I go a layer down — rebuilding the ML-systems
+    abstractions I had been standing on (autograd, tensor-framework internals, GPU
+    kernels, distributed execution) to move from <i>using</i> these systems to
+    <i>designing</i> them. Two things this has taught me that don't fit on a CV:
+  </p>
+  <ul class="entry" style="border:none; padding-top:0; list-style:none; margin:0; padding-left:0;">
+    <li style="margin-bottom:10px;">
+      <b>More hardware is not a strategy.</b> Rebuilding my video-eval pipeline on
+      Ray made it <b>5.4× faster</b> — but it also runs fastest on <i>2 of 8 GPUs</i>,
+      because the real constraint was CPU, not GPU. The cost was never in the
+      framework; it was in the defaults, where performance disappears with no error.
+    </li>
+    <li>
+      <b>You understand a system by rebuilding it.</b> Working through Stanford CS336,
+      Karpathy's <i>Zero to Hero</i>, tinygrad, and the GPU-MODE lectures — a BPE
+      tokenizer that matches GPT-2's, an autograd engine, a few kernels — turns tools
+      I <i>used</i> into ones I can reason about and redesign.
+    </li>
+  </ul>
 </section>
 
 <section id="residency">
   <h2>Qualcomm AI Residency</h2>
   <span class="residency-badge">Batch 13 · AI Research Resident</span>
   <p class="grad-intro">
-    I began my professional research career as a member of <b>Batch 13 of the
-    Qualcomm AI Residency Program</b> at Qualcomm AI Research, building the next
-    generation of on-device generative AI alongside a talented cohort of residents
-    and researchers.
+    I began my research career in <b>Batch 13 of the Qualcomm AI Residency
+    Program</b>, working on generative AI alongside a talented cohort. Beyond the
+    research, it is a structured apprenticeship: Qualcomm scientists teach us the
+    foundations directly — <b>machine learning, linear algebra, statistics, and
+    probability</b> — so the practical work rests on solid theory.
   </p>
   <figure class="residency-figure">
     <img src="Qualcomm_AI_Resident/Join_Qualcomm_AI_Research_VN_as_AI_Research_Resident.jpg"
@@ -520,7 +587,7 @@
     <p class="entry-sub">B.Sc. in Computer Science · Hanoi, Vietnam</p>
     <ul>
       <li>GPA 3.69 / 4.0 — graduated early in 3.5 years.</li>
-      <li>Top 3 Excellent Students of the graduating class.</li>
+      <li>One of 4 Excellent Students of the graduating class (Director's Certificate of Merit).</li>
       <li>Delivered the graduation speech on behalf of all graduating students.</li>
     </ul>
   </div>
@@ -530,7 +597,12 @@
       <h3>Lam Son High School for the Gifted</h3>
       <span class="entry-meta">Aug 2018 – May 2021</span>
     </div>
-    <p class="entry-sub">Mathematics Track · Thanh Hoa, Vietnam</p>
+    <p class="entry-sub">Specialized Mathematics Program · Thanh Hoa, Vietnam</p>
+    <ul>
+      <li><b>Vietnam National Mathematics Competition, Second Prize — TST List</b> (2021) — Ranked 11th nationally and selected for the Team Selection Test, the second round for choosing Vietnam's International Mathematical Olympiad team.</li>
+      <li><b>Vietnam National Mathematics Competition, Consolation Prize</b> (2020) — National award in Vietnam's highest-level mathematics competition for gifted high school students.</li>
+      <li><b>North Central Region Mathematics Olympiad, First Prize</b> (2019) — Among specialized high schools in the North Central Region of Vietnam.</li>
+    </ul>
   </div>
 </section>
 
@@ -538,28 +610,12 @@
   <h2>Honors &amp; Awards</h2>
   <ul class="awards">
     <li>
-      <span class="year">2024–2025</span>
-      <span class="what"><b>Director's Certificate of Merit, HUST</b> — One of 3 outstanding graduating students for academic performance and conduct.</span>
-    </li>
-    <li>
       <span class="year">2022–2024</span>
       <span class="what"><b>HUST Wings Scholarship</b> — Six consecutive semesters.</span>
     </li>
     <li>
       <span class="year">2021–2022</span>
-      <span class="what"><b>HUST Academic Encouragement Scholarship</b> — Top &lt;10% of the CS cohort.</span>
-    </li>
-    <li>
-      <span class="year">2021</span>
-      <span class="what"><b>Vietnam National Mathematics Olympiad, Second Prize — TST List</b> — Ranked 11th nationally; selected for the IMO Team Selection Test.</span>
-    </li>
-    <li>
-      <span class="year">2020</span>
-      <span class="what"><b>Vietnam National Mathematics Olympiad, Consolation Prize.</b></span>
-    </li>
-    <li>
-      <span class="year">2019</span>
-      <span class="what"><b>North Central Region Mathematics Olympiad, First Prize</b> — Among specialized high schools.</span>
+      <span class="what"><b>HUST Academic Encouragement Scholarship</b> — Computer Science department, &lt;3% selection rate.</span>
     </li>
   </ul>
 </section>
@@ -567,9 +623,10 @@
 <section id="graduation">
   <h2>Graduation</h2>
   <p class="grad-intro">
-    I graduated early from HUST in 3.5 years and had the honor of delivering the
-    class graduation speech on behalf of all graduating students — one of the most
-    memorable moments of my time there.
+    I gave the class graduation speech — a heartfelt tribute to our parents,
+    teachers, and the years that shaped us. It struck a chord far beyond the hall,
+    moving many to tears and drawing <b>over 10 million views</b> across Facebook,
+    YouTube, and TikTok.
   </p>
   <div class="grad-video">
     <iframe
@@ -583,6 +640,10 @@
   <p class="grad-fallback">
     Video not loading?
     <a href="https://www.facebook.com/reel/1237349637759299" target="_blank" rel="noopener">Watch the speech on Facebook</a>.
+  </p>
+  <p class="grad-press">
+    In the press:
+    <a href="https://www.vietnam.vn/en/thay-bo-me-viet-giac-mo-di-hoc-nam-sinh-tot-nghiep-xuat-sac-dh-bach-khoa" target="_blank" rel="noopener">“Fulfilling my parents' dream of an education” — coverage of the speech (Vietnam.vn)</a>.
   </p>
   <div class="grad-gallery">
     <figure>
@@ -607,9 +668,10 @@
 <section class="skills">
   <h2>Skills</h2>
   <p><b>Languages:</b> Python, C / C++</p>
-  <p><b>Frameworks:</b> PyTorch, distributed training and inference, multi-GPU / multi-node systems</p>
-  <p><b>Tools:</b> Git, Linux, Docker, SLURM</p>
-  <p><b>Libraries:</b> Diffusers, OpenCV, Pandas, NumPy, Matplotlib, scikit-learn</p>
+  <p><b>Distributed &amp; parallel:</b> multi-GPU / multi-node training and inference (up to 300 GPUs), NCCL, CPU/GPU workload balancing, Ray, SLURM</p>
+  <p><b>Efficiency &amp; compilers:</b> <code>torch.compile</code>, quantization, KV-cache, distillation, vLLM, SGLang</p>
+  <p><b>Frameworks &amp; libraries:</b> PyTorch, Diffusers, OpenCV, NumPy, Pandas, Matplotlib, scikit-learn</p>
+  <p><b>Tools:</b> Git, Linux, Docker</p>
 </section>
 
 <footer>

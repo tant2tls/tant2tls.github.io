@@ -131,6 +131,19 @@ charset="UTF-8" />
     gap: 5px;
   }
   .contact-row .sep { color: #c8ccd2; }
+  .email-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .email-row a {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .email-row a:hover { color: var(--accent); }
+  .email-icon { color: var(--muted); font-size: 15px; }
 
   /* Sections */
   section { margin-top: 44px; }
@@ -178,6 +191,18 @@ charset="UTF-8" />
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 14px;
+  }
+  .bio .goal {
+    font-family: 'Source Serif 4', serif;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--fg);
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin: 20px 0;
   }
   .tag {
     background: var(--accent-soft);
@@ -257,6 +282,7 @@ charset="UTF-8" />
   .pub-links a {
     display: inline-block;
     padding: 1px 8px;
+    margin-right: 6px;
     border: 1px solid var(--rule);
     border-radius: 3px;
     color: var(--accent);
@@ -422,7 +448,7 @@ charset="UTF-8" />
       <a href="#bio">About</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
-      <a href="#systems">Systems</a>
+      <!-- <a href="#systems">Systems</a> -->
       <a href="#residency">Residency</a>
       <a href="#graduation">Graduation</a>
       <a href="CV.pdf" target="_blank" rel="noopener">CV</a>
@@ -445,13 +471,16 @@ charset="UTF-8" />
       B.Sc. in Computer Science, <b>Hanoi University of Science and Technology</b>
     </p>
     <div class="contact-row">
-      <a href="mailto:tanngo06022002@gmail.com" target="_blank" rel="noopener">Email</a>
-      <span class="sep">·</span>
       <a href="https://github.com/tant2tls" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">·</span>
       <a href="https://www.linkedin.com/in/tant2tls/" target="_blank" rel="noopener">LinkedIn</a>
       <span class="sep">·</span>
       <a href="CV.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+    <div class="email-row">
+      <span class="email-icon" aria-hidden="true">✉</span>
+      <a href="mailto:tan.nv210769@sis.hust.edu.vn">tan.nv210769@sis.hust.edu.vn</a>
+      <a href="mailto:tanngo@qti.qualcomm.com">tanngo@qti.qualcomm.com</a>
     </div>
   </div>
 </header>
@@ -461,25 +490,40 @@ charset="UTF-8" />
     "There is always a God's solution."
   </blockquote>
   <p>
-    I am an AI Research Resident at <a href="https://www.qualcomm.com/research/artificial-intelligence" target="_blank" rel="noopener">Qualcomm AI Research</a>,
-    working on image, 3D, and video generation — currently unifying
-    <b>camera and object motion control</b> for video diffusion, with training,
-    inference, and evaluation running across clusters of up to 300 GPUs.
+    I am an AI Research Resident on the <b>Computer Vision team</b> at
+    <a href="https://www.qualcomm.com/research/artificial-intelligence" target="_blank" rel="noopener">Qualcomm AI Research</a>,
+    building generative models for image, 3D, and video and pushing them to run
+    efficiently. My work centers on <b>controlling the content of video
+    diffusion models</b> and using <b>video models to augment data for robotics</b>.
   </p>
   <p>
     My interest sits at the boundary between <b>model design</b> and <b>ML
-    systems</b>: I want to understand AI end-to-end, from the learning dynamics of
-    generative models down to the GPU kernels and distributed systems that run them
-    at scale. I love thinking about <b>efficiency and parallelism</b> — trusting
-    measurement over intuition, hunting for where performance is quietly lost, and
-    reshaping work so it runs together rather than in sequence — and I want to
-    co-design models and their execution so that efficiency is built in rather than
-    bolted on.
+    systems</b> — understanding AI end-to-end, from the learning dynamics of
+    generative models down to the GPU kernels that run them. I love
+    <b>efficiency and parallelism</b>: measuring rather than guessing, finding where
+    performance is quietly lost, and co-designing models with their execution so
+    efficiency is built in, not bolted on. That taste for structure goes back to
+    <b>math olympiads</b> — I still love a hard problem with an elegant solution
+    hiding inside it.
   </p>
   <p>
-    I am applying to PhD programs to build the theory behind the systems I have
-    learned to bend.
+    I am just as drawn to the classic foundations of computer science —
+    <b>computer architecture, operating systems, and networking</b> — as I am to
+    modern AI. I believe the most powerful systems come from fusing the two:
+    decades of hard-won engineering wisdom about how machines actually compute,
+    combined with the capability of modern AI models. Building at that intersection is
+    what excites me most.
   </p>
+  <p style="font-size:14.5px; color:var(--muted);">
+    <b style="color:var(--fg);">My favourite courses:</b>
+    <a href="https://cs336.stanford.edu/" target="_blank" rel="noopener">Stanford CS336</a> ·
+    <a href="https://www.youtube.com/@AndrejKarpathy" target="_blank" rel="noopener">Karpathy's <i>Zero to Hero</i></a> ·
+    <a href="https://mlsysbook.ai/tinytorch/" target="_blank" rel="noopener">tinytorch</a> · <a href="https://github.com/karpathy/micrograd" target="_blank" rel="noopener">micrograd</a> ·
+    <a href="https://www.youtube.com/@GPUMODE" target="_blank" rel="noopener">GPU-MODE</a>.
+  </p>
+  <p class="goal">
+    I am applying to PhD programs — I would be grateful for the chance to pursue
+    this direction.
   </p>
   <div class="interests">
     <span class="tag">Generative models</span>
@@ -529,12 +573,14 @@ charset="UTF-8" />
         *Equal contribution
       </div>
       <div class="pub-links">
+        <a href="https://phongnhhn.info/Unicamo/" target="_blank" rel="noopener">Project Page</a>
         <a href="https://arxiv.org/html/2607.02798" target="_blank" rel="noopener">arXiv</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- HIDDEN (restore later on request):
 <section id="systems">
   <h2>Systems Research Interest</h2>
   <p class="grad-intro">
@@ -552,12 +598,13 @@ charset="UTF-8" />
     </li>
     <li>
       <b>You understand a system by rebuilding it.</b> Working through Stanford CS336,
-      Karpathy's <i>Zero to Hero</i>, tinygrad, and the GPU-MODE lectures — a BPE
+      Karpathy's <i>Zero to Hero</i>, micrograd, and the GPU-MODE lectures — a BPE
       tokenizer that matches GPT-2's, an autograd engine, a few kernels — turns tools
       I <i>used</i> into ones I can reason about and redesign.
     </li>
   </ul>
 </section>
+-->
 
 <section id="residency">
   <h2>Qualcomm AI Residency</h2>
@@ -584,11 +631,9 @@ charset="UTF-8" />
       <h3>Hanoi University of Science and Technology (HUST)</h3>
       <span class="entry-meta">Aug 2021 – Apr 2025</span>
     </div>
-    <p class="entry-sub">B.Sc. in Computer Science · Hanoi, Vietnam</p>
+    <p class="entry-sub">B.Sc. in Computer Science · GPA 3.69 / 4.0 · Hanoi, Vietnam</p>
     <ul>
-      <li>GPA 3.69 / 4.0 — graduated early in 3.5 years.</li>
-      <li>One of 4 Excellent Students of the graduating class (Director's Certificate of Merit).</li>
-      <li>Delivered the graduation speech on behalf of all graduating students.</li>
+      <li>Graduated early in 3.5 years — one of 4 Excellent Students of the class (Director's Certificate of Merit).</li>
     </ul>
   </div>
 
@@ -597,15 +642,18 @@ charset="UTF-8" />
       <h3>Lam Son High School for the Gifted</h3>
       <span class="entry-meta">Aug 2018 – May 2021</span>
     </div>
-    <p class="entry-sub">Specialized Mathematics Program · Thanh Hoa, Vietnam</p>
+    <p class="entry-sub">Specialized Mathematics Program · Vietnam</p>
     <ul>
-      <li><b>Vietnam National Mathematics Competition, Second Prize — TST List</b> (2021) — Ranked 11th nationally and selected for the Team Selection Test, the second round for choosing Vietnam's International Mathematical Olympiad team.</li>
-      <li><b>Vietnam National Mathematics Competition, Consolation Prize</b> (2020) — National award in Vietnam's highest-level mathematics competition for gifted high school students.</li>
-      <li><b>North Central Region Mathematics Olympiad, First Prize</b> (2019) — Among specialized high schools in the North Central Region of Vietnam.</li>
+      <li>National math-olympiad medalist — ranked 11th nationally and named to the Vietnam IMO Team Selection Test (2021).</li>
     </ul>
   </div>
+
+  <p style="font-size:14px; color:var(--muted); margin-top:8px;">
+    Full awards and coursework in my <a href="CV.pdf" target="_blank" rel="noopener">CV</a>.
+  </p>
 </section>
 
+<!-- HIDDEN (restore later on request):
 <section>
   <h2>Honors &amp; Awards</h2>
   <ul class="awards">
@@ -619,6 +667,7 @@ charset="UTF-8" />
     </li>
   </ul>
 </section>
+-->
 
 <section id="graduation">
   <h2>Graduation</h2>
@@ -663,15 +712,6 @@ charset="UTF-8" />
       <figcaption>Among the top excellent students</figcaption>
     </figure>
   </div>
-</section>
-
-<section class="skills">
-  <h2>Skills</h2>
-  <p><b>Languages:</b> Python, C / C++</p>
-  <p><b>Distributed &amp; parallel:</b> multi-GPU / multi-node training and inference (up to 300 GPUs), NCCL, CPU/GPU workload balancing, Ray, SLURM</p>
-  <p><b>Efficiency &amp; compilers:</b> <code>torch.compile</code>, quantization, KV-cache, distillation, vLLM, SGLang</p>
-  <p><b>Frameworks &amp; libraries:</b> PyTorch, Diffusers, OpenCV, NumPy, Pandas, Matplotlib, scikit-learn</p>
-  <p><b>Tools:</b> Git, Linux, Docker</p>
 </section>
 
 <footer>

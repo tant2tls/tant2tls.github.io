@@ -31,7 +31,7 @@ Styling is driven by CSS custom properties in `:root` (`--accent: #0b4f9c` is th
 
 ## Known content nuances
 
-- Academic ranking is **"one of 4 Excellent Students"** of the graduating class, and the **Director's Certificate of Merit** is likewise given to those **4** outstanding graduates — both use 4 (updated 2026-08-05 from the master `CV.md`). Keep them consistent across bio, News, Education, and Honors.
+- Academic ranking is **"one of 9 Excellent Students"** of the graduating class (out of ~3,000), and the **Director's Certificate of Merit** is likewise given to those **9** outstanding graduates — both use 9 (corrected 2026-08-15, confirmed against press coverage of the graduation speech — see `../application_process/ml_system_lab.md` §5/§11.4 for the prior "one of 4" figure this supersedes). Keep them consistent across bio, News, Education, and Honors.
 - The graduation speech is an embedded Facebook video plugin iframe (requires the reel to stay Public) with a plain-link fallback below it for ad-blocked visitors.
 - The homepage is the source of truth for what's public; `../CV.md` (one level up, outside this repo) holds the fuller record and is the reference when syncing news/rankings.
 
